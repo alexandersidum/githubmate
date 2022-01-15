@@ -22,8 +22,10 @@ class _$AuthFailureTearOff {
     return const _AuthFailure();
   }
 
-  _Server server() {
-    return const _Server();
+  _Server server([String? message]) {
+    return _Server(
+      message,
+    );
   }
 
   _Storage storage() {
@@ -39,21 +41,21 @@ mixin _$AuthFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function() server,
+    required TResult Function(String? message) server,
     required TResult Function() storage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
     required TResult orElse(),
   }) =>
@@ -139,7 +141,7 @@ class _$_AuthFailure extends _AuthFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function() server,
+    required TResult Function(String? message) server,
     required TResult Function() storage,
   }) {
     return $default();
@@ -149,7 +151,7 @@ class _$_AuthFailure extends _AuthFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
   }) {
     return $default?.call();
@@ -159,7 +161,7 @@ class _$_AuthFailure extends _AuthFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
     required TResult orElse(),
   }) {
@@ -213,6 +215,7 @@ abstract class _AuthFailure extends AuthFailure {
 abstract class _$ServerCopyWith<$Res> {
   factory _$ServerCopyWith(_Server value, $Res Function(_Server) then) =
       __$ServerCopyWithImpl<$Res>;
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -223,57 +226,80 @@ class __$ServerCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   _Server get _value => super._value as _Server;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_Server(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Server extends _Server {
-  const _$_Server() : super._();
+  const _$_Server([this.message]) : super._();
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AuthFailure.server()';
+    return 'AuthFailure.server(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Server);
+        (other.runtimeType == runtimeType &&
+            other is _Server &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ServerCopyWith<_Server> get copyWith =>
+      __$ServerCopyWithImpl<_Server>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function() server,
+    required TResult Function(String? message) server,
     required TResult Function() storage,
   }) {
-    return server();
+    return server(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
   }) {
-    return server?.call();
+    return server?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
     required TResult orElse(),
   }) {
     if (server != null) {
-      return server();
+      return server(message);
     }
     return orElse();
   }
@@ -314,8 +340,12 @@ class _$_Server extends _Server {
 }
 
 abstract class _Server extends AuthFailure {
-  const factory _Server() = _$_Server;
+  const factory _Server([String? message]) = _$_Server;
   const _Server._() : super._();
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$ServerCopyWith<_Server> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -357,7 +387,7 @@ class _$_Storage extends _Storage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function() server,
+    required TResult Function(String? message) server,
     required TResult Function() storage,
   }) {
     return storage();
@@ -367,7 +397,7 @@ class _$_Storage extends _Storage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
   }) {
     return storage?.call();
@@ -377,7 +407,7 @@ class _$_Storage extends _Storage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function()? server,
+    TResult Function(String? message)? server,
     TResult Function()? storage,
     required TResult orElse(),
   }) {
