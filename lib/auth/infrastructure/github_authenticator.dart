@@ -16,6 +16,7 @@ class GithubAuthenticator {
 
   final CredentialsStorage _credentialsStorage;
   final Dio _dio;
+  final GithubHttpClient _customHttpClient = GithubHttpClient();
   static const _clientId = String.fromEnvironment('clientId');
   static const _clientSecret = String.fromEnvironment('clientSecret');
   static final authorizationEndpoint =
@@ -70,8 +71,7 @@ class GithubAuthenticator {
     }
   }
 
-  Future<Either<AuthFailure, Unit>> signOut(
-      AuthorizationCodeGrant grant, Map<String, String> parameters) async {
+  Future<Either<AuthFailure, Unit>> signOut() async {
     try {
       final credential = await _credentialsStorage.read();
       if (credential?.accessToken != null) {
@@ -82,8 +82,9 @@ class GithubAuthenticator {
               data: {"access_token": credential!.accessToken});
         } on DioError catch (e) {
           if (e.isConnectionError) {
-            // ignore
+            // Ignore it so that signout still possible on offline user
           } else {
+            // We didnt expect this error so need to rethrow
             rethrow;
           }
         }
@@ -100,7 +101,10 @@ class GithubAuthenticator {
   Future<Either<AuthFailure, Credentials>> refreshCredential(
       Credentials credentials) async {
     try {
-      final refreshedCredentials = await credentials.refresh();
+      final refreshedCredentials = await credentials.refresh(
+          identifier: _clientId,
+          secret: _clientSecret,
+          httpClient: _customHttpClient);
       await _credentialsStorage.save(refreshedCredentials);
       return right(refreshedCredentials);
     } on FormatException {
