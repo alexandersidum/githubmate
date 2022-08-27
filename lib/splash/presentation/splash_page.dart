@@ -7,12 +7,26 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(MdiIcons.github),
-          LinearProgressIndicator(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(
+              MdiIcons.github,
+              size: 150,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: LinearProgressIndicator(
+                minHeight: 8,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -26,6 +26,7 @@ class GithubAuthenticator {
   static final revocationEndpoint =
       Uri.parse('https://api.github.com/applications/$_clientId/token');
   static final redirectUri = Uri.parse('http://localhost:3000/callback');
+  // static final redirectUri = Uri.parse('http://google.com/callback');
   static final scopes = ['read:user', 'repo'];
 
   Future<bool> get isSignedIn =>
