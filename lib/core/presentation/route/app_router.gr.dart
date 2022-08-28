@@ -16,7 +16,8 @@ import 'package:flutter/material.dart' as _i6;
 
 import '../../../auth/presentation/authorization_page.dart' as _i4;
 import '../../../auth/presentation/sign_in_page.dart' as _i2;
-import '../../../github/presentation/starred_repository_page.dart' as _i3;
+import '../../../github/repos/starred_repo/presentation/starred_repository_page.dart'
+    as _i3;
 import '../../../splash/presentation/splash_page.dart' as _i1;
 
 class AppRouter extends _i5.RootStackRouter {

@@ -13,7 +13,7 @@ class StarredRepositoryPage extends ConsumerWidget {
             onPressed: () {
               ref.read(authNotifierProvider.notifier).signOut();
             },
-            child: const Text("Sign Out")),
+            child: const Text("SignOut")),
       ),
     );
   }

@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:githubmate/auth/shared/providers.dart';
-import 'package:githubmate/core/presentation/route/app_router.gr.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -36,27 +34,13 @@ class SignInPage extends ConsumerWidget {
                 ref.read(authNotifierProvider.notifier).signIn((uri) {
                   //Run Webview
                   final completer = Completer<Uri>();
-                  AutoRouter.of(context).push(AuthorizationRoute(
-                    authorizationUrl: uri,
-                    onAuthorizationRedirectAttempt: (redirectedUri) {
-                      completer.complete(redirectedUri);
-                    },
-                  ));
-                  return completer.future;
-                  // print('start webviewing');
-                  // final redirected = await AutoRouter.of(context)
-                  //     .push<Uri?>(AuthorizationRoute(
+                  // AutoRouter.of(context).push(AuthorizationRoute(
                   //   authorizationUrl: uri,
                   //   onAuthorizationRedirectAttempt: (redirectedUri) {
-                  //     // completer.complete(redirectedUri);
+                  //     completer.complete(redirectedUri);
                   //   },
                   // ));
-
-                  // print('end webviewing $redirected');
-                  // if (redirected == null) {
-                  //   throw Exception('Fail to Authorize');
-                  // }
-                  // return redirected;
+                  return completer.future;
                 });
               },
               child: const Text("Sign In"),
