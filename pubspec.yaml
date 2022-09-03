@@ -20,10 +20,12 @@ dependencies:
   flutter_secure_storage: ^5.0.2
   freezed_annotation: ^2.1.0
   hive: ^2.2.3
+  hive_flutter: ^1.1.0
   hooks_riverpod: ^1.0.3
   json_annotation: ^4.6.0
   material_design_icons_flutter: ^5.0.6996
   oauth2: ^2.0.0
+  path_provider: ^2.0.11
   riverpod: ^1.0.3
   webview_flutter: ^3.0.0
 
@@ -34,7 +36,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.1.0+1
+  hive_generator: ^1.1.3
   json_serializable: ^6.3.1
+
+dependency_overrides:
+  analyzer: ">=4.3.0 <4.4.0"
 
 flutter:
   uses-material-design: true
+  
+global_options:
+  freezed:freezed:
+    runs_before:
+      - hive_generator:hive_generator
+  hive_generator:hive_generator:
+    runs_before:
+      - json_serializable:json_serializable

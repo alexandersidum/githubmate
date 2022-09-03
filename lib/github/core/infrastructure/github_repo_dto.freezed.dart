@@ -20,14 +20,21 @@ GithubRepoDTO _$GithubRepoDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GithubRepoDTO {
+  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   UserDTO get owner => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get name => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'description', defaultValue: '')
   String get description => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'stargazers_count')
   int get stargazerCount => throw _privateConstructorUsedError;
+  @HiveField(5)
   String get language => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get visibility => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,13 +49,22 @@ abstract class $GithubRepoDTOCopyWith<$Res> {
           GithubRepoDTO value, $Res Function(GithubRepoDTO) then) =
       _$GithubRepoDTOCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      UserDTO owner,
-      String name,
-      @JsonKey(name: 'description', defaultValue: '') String description,
-      @JsonKey(name: 'stargazers_count') int stargazerCount,
-      String language,
-      String visibility});
+      {@HiveField(0)
+          String id,
+      @HiveField(1)
+          UserDTO owner,
+      @HiveField(2)
+          String name,
+      @HiveField(3)
+      @JsonKey(name: 'description', defaultValue: '')
+          String description,
+      @HiveField(4)
+      @JsonKey(name: 'stargazers_count')
+          int stargazerCount,
+      @HiveField(5)
+          String language,
+      @HiveField(6)
+          String visibility});
 
   $UserDTOCopyWith<$Res> get owner;
 }
@@ -120,13 +136,22 @@ abstract class _$$_GithubRepoDTOCopyWith<$Res>
       __$$_GithubRepoDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      UserDTO owner,
-      String name,
-      @JsonKey(name: 'description', defaultValue: '') String description,
-      @JsonKey(name: 'stargazers_count') int stargazerCount,
-      String language,
-      String visibility});
+      {@HiveField(0)
+          String id,
+      @HiveField(1)
+          UserDTO owner,
+      @HiveField(2)
+          String name,
+      @HiveField(3)
+      @JsonKey(name: 'description', defaultValue: '')
+          String description,
+      @HiveField(4)
+      @JsonKey(name: 'stargazers_count')
+          int stargazerCount,
+      @HiveField(5)
+          String language,
+      @HiveField(6)
+          String visibility});
 
   @override
   $UserDTOCopyWith<$Res> get owner;
@@ -188,35 +213,52 @@ class __$$_GithubRepoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1, adapterName: 'GithubRepoDTOAdapter')
 class _$_GithubRepoDTO extends _GithubRepoDTO {
   const _$_GithubRepoDTO(
-      {required this.id,
-      required this.owner,
-      required this.name,
-      @JsonKey(name: 'description', defaultValue: '') required this.description,
-      @JsonKey(name: 'stargazers_count') required this.stargazerCount,
-      required this.language,
-      required this.visibility})
+      {@HiveField(0)
+          required this.id,
+      @HiveField(1)
+          required this.owner,
+      @HiveField(2)
+          required this.name,
+      @HiveField(3)
+      @JsonKey(name: 'description', defaultValue: '')
+          required this.description,
+      @HiveField(4)
+      @JsonKey(name: 'stargazers_count')
+          required this.stargazerCount,
+      @HiveField(5)
+          required this.language,
+      @HiveField(6)
+          required this.visibility})
       : super._();
 
   factory _$_GithubRepoDTO.fromJson(Map<String, dynamic> json) =>
       _$$_GithubRepoDTOFromJson(json);
 
   @override
+  @HiveField(0)
   final String id;
   @override
+  @HiveField(1)
   final UserDTO owner;
   @override
+  @HiveField(2)
   final String name;
   @override
+  @HiveField(3)
   @JsonKey(name: 'description', defaultValue: '')
   final String description;
   @override
+  @HiveField(4)
   @JsonKey(name: 'stargazers_count')
   final int stargazerCount;
   @override
+  @HiveField(5)
   final String language;
   @override
+  @HiveField(6)
   final String visibility;
 
   @override
@@ -268,35 +310,49 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
 
 abstract class _GithubRepoDTO extends GithubRepoDTO {
   const factory _GithubRepoDTO(
-      {required final String id,
-      required final UserDTO owner,
-      required final String name,
+      {@HiveField(0)
+          required final String id,
+      @HiveField(1)
+          required final UserDTO owner,
+      @HiveField(2)
+          required final String name,
+      @HiveField(3)
       @JsonKey(name: 'description', defaultValue: '')
           required final String description,
+      @HiveField(4)
       @JsonKey(name: 'stargazers_count')
           required final int stargazerCount,
-      required final String language,
-      required final String visibility}) = _$_GithubRepoDTO;
+      @HiveField(5)
+          required final String language,
+      @HiveField(6)
+          required final String visibility}) = _$_GithubRepoDTO;
   const _GithubRepoDTO._() : super._();
 
   factory _GithubRepoDTO.fromJson(Map<String, dynamic> json) =
       _$_GithubRepoDTO.fromJson;
 
   @override
+  @HiveField(0)
   String get id;
   @override
+  @HiveField(1)
   UserDTO get owner;
   @override
+  @HiveField(2)
   String get name;
   @override
+  @HiveField(3)
   @JsonKey(name: 'description', defaultValue: '')
   String get description;
   @override
+  @HiveField(4)
   @JsonKey(name: 'stargazers_count')
   int get stargazerCount;
   @override
+  @HiveField(5)
   String get language;
   @override
+  @HiveField(6)
   String get visibility;
   @override
   @JsonKey(ignore: true)

@@ -20,10 +20,13 @@ UserDTO _$UserDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDTO {
+  @HiveField(0)
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: "login")
   String get name => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: "avatar_url")
   String get avatar => throw _privateConstructorUsedError;
 
@@ -37,9 +40,9 @@ abstract class $UserDTOCopyWith<$Res> {
   factory $UserDTOCopyWith(UserDTO value, $Res Function(UserDTO) then) =
       _$UserDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "id") String id,
-      @JsonKey(name: "login") String name,
-      @JsonKey(name: "avatar_url") String avatar});
+      {@HiveField(0) @JsonKey(name: "id") String id,
+      @HiveField(1) @JsonKey(name: "login") String name,
+      @HiveField(2) @JsonKey(name: "avatar_url") String avatar});
 }
 
 /// @nodoc
@@ -80,9 +83,9 @@ abstract class _$$_UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       __$$_UserDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "id") String id,
-      @JsonKey(name: "login") String name,
-      @JsonKey(name: "avatar_url") String avatar});
+      {@HiveField(0) @JsonKey(name: "id") String id,
+      @HiveField(1) @JsonKey(name: "login") String name,
+      @HiveField(2) @JsonKey(name: "avatar_url") String avatar});
 }
 
 /// @nodoc
@@ -119,23 +122,27 @@ class __$$_UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 0, adapterName: 'UserDTOAdapter')
 class _$_UserDTO extends _UserDTO {
   const _$_UserDTO(
-      {@JsonKey(name: "id") required this.id,
-      @JsonKey(name: "login") required this.name,
-      @JsonKey(name: "avatar_url") required this.avatar})
+      {@HiveField(0) @JsonKey(name: "id") required this.id,
+      @HiveField(1) @JsonKey(name: "login") required this.name,
+      @HiveField(2) @JsonKey(name: "avatar_url") required this.avatar})
       : super._();
 
   factory _$_UserDTO.fromJson(Map<String, dynamic> json) =>
       _$$_UserDTOFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: "id")
   final String id;
   @override
+  @HiveField(1)
   @JsonKey(name: "login")
   final String name;
   @override
+  @HiveField(2)
   @JsonKey(name: "avatar_url")
   final String avatar;
 
@@ -177,20 +184,29 @@ class _$_UserDTO extends _UserDTO {
 
 abstract class _UserDTO extends UserDTO {
   const factory _UserDTO(
-      {@JsonKey(name: "id") required final String id,
-      @JsonKey(name: "login") required final String name,
-      @JsonKey(name: "avatar_url") required final String avatar}) = _$_UserDTO;
+      {@HiveField(0)
+      @JsonKey(name: "id")
+          required final String id,
+      @HiveField(1)
+      @JsonKey(name: "login")
+          required final String name,
+      @HiveField(2)
+      @JsonKey(name: "avatar_url")
+          required final String avatar}) = _$_UserDTO;
   const _UserDTO._() : super._();
 
   factory _UserDTO.fromJson(Map<String, dynamic> json) = _$_UserDTO.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: "id")
   String get id;
   @override
+  @HiveField(1)
   @JsonKey(name: "login")
   String get name;
   @override
+  @HiveField(2)
   @JsonKey(name: "avatar_url")
   String get avatar;
   @override
