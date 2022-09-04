@@ -7,7 +7,11 @@ part 'user_dto.g.dart';
 
 @freezed
 class UserDTO with _$UserDTO {
-  const UserDTO._();
+  factory UserDTO.fromDomain(User user) =>
+      UserDTO(id: user.id, name: user.name, avatar: user.avatar);
+
+  factory UserDTO.fromJson(Map<String, dynamic> json) =>
+      _$UserDTOFromJson(json);
   @HiveType(typeId: 0, adapterName: 'UserDTOAdapter')
   const factory UserDTO({
     @HiveField(0) @JsonKey(name: "id") required String id,
@@ -15,11 +19,8 @@ class UserDTO with _$UserDTO {
     @HiveField(2) @JsonKey(name: "avatar_url") required String avatar,
   }) = _UserDTO;
 
-  factory UserDTO.fromJson(Map<String, dynamic> json) =>
-      _$UserDTOFromJson(json);
-
-  factory UserDTO.fromDomain(User user) =>
-      UserDTO(id: user.id, name: user.name, avatar: user.avatar);
+  const UserDTO._();
+  static const boxName = "User";
 
   User toDomain() => User(id: id, name: name, avatar: avatar);
 }

@@ -1,17 +1,29 @@
-import 'package:githubmate/core/infrastructure/local_database.dart';
-import 'package:githubmate/github/core/infrastructure/github_repo_dto.dart';
-import 'package:githubmate/github/core/infrastructure/user_dto.dart';
 import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
 
-class HiveDatabase extends LocalDatabase {
-  @override
-  Future<void> init() async {
-    final appDocumentDir = await getApplicationDocumentsDirectory();
-    Hive.init(
-      appDocumentDir.path,
-    );
-    Hive.registerAdapter(UserDTOAdapter());
-    Hive.registerAdapter(GithubRepoDTOAdapter());
+class HiveDatabase {
+  static Future<void> putData<T>(
+      {required String boxName,
+      required String key,
+      required dynamic data}) async {
+    final box = Hive.lazyBox<T>(boxName);
+    await box.put(key, data);
+  }
+
+  static Future<void> addData<T>(
+      {required String boxName, required dynamic data}) async {
+    final box = Hive.lazyBox<T>(boxName);
+    await box.add(data);
+  }
+
+  static Future<T?> getData<T>({required String boxName, String? key}) async {
+    final box = Hive.lazyBox<T>(boxName);
+    final output = box.get(key);
+    return output;
+  }
+
+  static Future<void> deleteData<T>(
+      {required String boxName, String? key}) async {
+    final box = Hive.lazyBox<T>(boxName);
+    await box.delete(key);
   }
 }

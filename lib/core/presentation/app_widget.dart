@@ -7,6 +7,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // This provider exist only to initialize checking on app starting
 final initializationProvider = FutureProvider((ref) async {
   final notifier = ref.read(authNotifierProvider.notifier);
+  // final hive = ref.read(hiveProvider);
+  // final cache = ref.read(githubHeaderCacheProvider);
+  // Log.setLog("Saving Header");
+  // await cache.saveHeader(Uri.parse("www.google.com"),
+  //     const GithubHeaders(etag: "etagTest", link: PaginationLink(maxPage: 2)));
+  // Log.setLog("Loading Header");
+  // final header = await cache.getHeader(
+  //   Uri.parse("www.google.com"),
+  // );
+  // Log.setLog("Header is $header");
+
   await notifier.checkAuth();
 });
 

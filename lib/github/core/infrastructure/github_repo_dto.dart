@@ -8,7 +8,17 @@ part 'github_repo_dto.g.dart';
 
 @freezed
 class GithubRepoDTO with _$GithubRepoDTO {
-  const GithubRepoDTO._();
+  factory GithubRepoDTO.fromDomain(GithubRepo domain) => GithubRepoDTO(
+      id: domain.id,
+      owner: UserDTO.fromDomain(domain.owner),
+      name: domain.name,
+      description: domain.description,
+      stargazerCount: domain.stargazerCount,
+      language: domain.language,
+      visibility: domain.visibility);
+
+  factory GithubRepoDTO.fromJson(Map<String, dynamic> json) =>
+      _$GithubRepoDTOFromJson(json);
   @HiveType(typeId: 1, adapterName: 'GithubRepoDTOAdapter')
   const factory GithubRepoDTO({
     @HiveField(0) required String id,
@@ -23,18 +33,8 @@ class GithubRepoDTO with _$GithubRepoDTO {
     @HiveField(5) required String language,
     @HiveField(6) required String visibility,
   }) = _GithubRepoDTO;
-
-  factory GithubRepoDTO.fromJson(Map<String, dynamic> json) =>
-      _$GithubRepoDTOFromJson(json);
-
-  factory GithubRepoDTO.fromDomain(GithubRepo domain) => GithubRepoDTO(
-      id: domain.id,
-      owner: UserDTO.fromDomain(domain.owner),
-      name: domain.name,
-      description: domain.description,
-      stargazerCount: domain.stargazerCount,
-      language: domain.language,
-      visibility: domain.visibility);
+  const GithubRepoDTO._();
+  static const boxName = "GithubRepo";
 
   GithubRepo toDomain() => GithubRepo(
       id: id,
