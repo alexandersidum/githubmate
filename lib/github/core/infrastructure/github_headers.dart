@@ -7,6 +7,8 @@ part 'github_headers.g.dart';
 
 @freezed
 class GithubHeaders with _$GithubHeaders {
+  factory GithubHeaders.fromJson(Map<String, dynamic> json) =>
+      _$GithubHeadersFromJson(json);
   factory GithubHeaders.parse(Response response) {
     final etag = response.headers.map['ETag']?[0];
     final link = response.headers.map['link']?[0];
@@ -17,9 +19,6 @@ class GithubHeaders with _$GithubHeaders {
             : PaginationLink.parse(link.split(","),
                 requestUrl: response.requestOptions.uri.toString()));
   }
-
-  factory GithubHeaders.fromJson(Map<String, dynamic> json) =>
-      _$GithubHeadersFromJson(json);
   @HiveType(typeId: 2, adapterName: 'GithubHeadersAdapter')
   const factory GithubHeaders({
     @HiveField(0) String? etag,
