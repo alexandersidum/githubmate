@@ -116,6 +116,15 @@ class GithubAuthenticator {
       return left(const AuthFailure.storage());
     }
   }
+
+  Future<Either<AuthFailure, Unit>> clearCredentialStorage() async {
+    try {
+      await _credentialsStorage.clear();
+      return right(unit);
+    } on PlatformException {
+      return left(const AuthFailure.storage());
+    }
+  }
 }
 
 //To Customize Send request on oauth2 package adding Accept Header to json

@@ -8,7 +8,7 @@ class GithubHeadersCache {
 
   Future<void> saveHeader(Uri uri, GithubHeaders headers) async {
     try {
-      await HiveDatabase.putData<GithubHeaders>(
+      await HiveDatabase.putLazyData<GithubHeaders>(
           boxName: GithubHeaders.boxName, key: uri.toString(), data: headers);
     } catch (e) {
       Log.setLog("Error saveHeader $e");
@@ -17,7 +17,7 @@ class GithubHeadersCache {
 
   Future<GithubHeaders?> getHeader(Uri uri) async {
     try {
-      final header = await HiveDatabase.getData<GithubHeaders>(
+      final header = await HiveDatabase.getLazyData<GithubHeaders>(
           boxName: GithubHeaders.boxName, key: uri.toString());
       Log.setLog("GithubHeader => $header");
       return header;
@@ -29,7 +29,7 @@ class GithubHeadersCache {
 
   Future<void> deleteHeader(Uri uri) async {
     try {
-      await HiveDatabase.deleteData(
+      await HiveDatabase.deleteLazyData(
           boxName: GithubHeaders.boxName, key: uri.toString());
     } catch (e) {
       Log.setLog("Error deleteHeader $e");

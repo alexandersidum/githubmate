@@ -27,7 +27,7 @@ Future<void> initializeHive() async {
 
   await Hive.openLazyBox<GithubHeaders>(GithubHeaders.boxName);
   await Hive.openLazyBox<UserDTO>(UserDTO.boxName);
-  await Hive.openLazyBox<GithubRepoDTO>(GithubRepoDTO.boxName);
+  await Hive.openBox<GithubRepoDTO>(GithubRepoDTO.boxName);
 
   // await Future.forEach(
   //     boxList, (String element) async => await Hive.openLazyBox(element));

@@ -5,6 +5,7 @@ import 'package:githubmate/core/infrastructure/remote_response.dart';
 import 'package:githubmate/github/core/infrastructure/github_headers.dart';
 import 'package:githubmate/github/core/infrastructure/github_headers_cache.dart';
 import 'package:githubmate/github/core/infrastructure/github_repo_dto.dart';
+import 'package:githubmate/github/core/infrastructure/pagination_config.dart';
 
 class StarredRepoRemoteService {
   StarredRepoRemoteService(this._dio, this._headersCache);
@@ -19,8 +20,8 @@ class StarredRepoRemoteService {
 
   Future<RemoteResponse<List<GithubRepoDTO>>> getStarredRepoPage(
       int page) async {
-    final requestUri =
-        Uri.https("api.github.com", "/user/starred", {"page": page});
+    final requestUri = Uri.https("api.github.com", "/user/starred",
+        {"page": page, "per_page": PaginationConfig.itemsPerPage});
 
     final prevHeader = await _headersCache.getHeader(requestUri);
 
@@ -28,7 +29,7 @@ class StarredRepoRemoteService {
       final response = await _dio.getUri(requestUri,
           options: Options(headers: {
             "Authorization": "bearer $token",
-            "Accept": "acceptHeader",
+            "Accept": acceptHeader,
             "If-None-Match": prevHeader?.etag ?? '',
           }));
       if (response.statusCode == 304) {
