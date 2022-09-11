@@ -7,7 +7,7 @@ part 'github_repo.freezed.dart';
 class GithubRepo with _$GithubRepo {
   const GithubRepo._();
   const factory GithubRepo({
-    required String id,
+    required int id,
     required User owner,
     required String name,
     required String description,

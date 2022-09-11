@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Fresh<T> {
   T get data => throw _privateConstructorUsedError;
   bool get isFresh => throw _privateConstructorUsedError;
-  bool? get isNextPageAvailable => throw _privateConstructorUsedError;
+  bool get isNextPageAvailable => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FreshCopyWith<T, Fresh<T>> get copyWith =>
@@ -29,7 +29,7 @@ mixin _$Fresh<T> {
 abstract class $FreshCopyWith<T, $Res> {
   factory $FreshCopyWith(Fresh<T> value, $Res Function(Fresh<T>) then) =
       _$FreshCopyWithImpl<T, $Res>;
-  $Res call({T data, bool isFresh, bool? isNextPageAvailable});
+  $Res call({T data, bool isFresh, bool isNextPageAvailable});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$FreshCopyWithImpl<T, $Res> implements $FreshCopyWith<T, $Res> {
       isNextPageAvailable: isNextPageAvailable == freezed
           ? _value.isNextPageAvailable
           : isNextPageAvailable // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$_FreshCopyWith<T, $Res> implements $FreshCopyWith<T, $Res> {
           _$_Fresh<T> value, $Res Function(_$_Fresh<T>) then) =
       __$$_FreshCopyWithImpl<T, $Res>;
   @override
-  $Res call({T data, bool isFresh, bool? isNextPageAvailable});
+  $Res call({T data, bool isFresh, bool isNextPageAvailable});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_FreshCopyWithImpl<T, $Res> extends _$FreshCopyWithImpl<T, $Res>
       isNextPageAvailable: isNextPageAvailable == freezed
           ? _value.isNextPageAvailable
           : isNextPageAvailable // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -108,7 +108,9 @@ class __$$_FreshCopyWithImpl<T, $Res> extends _$FreshCopyWithImpl<T, $Res>
 
 class _$_Fresh<T> extends _Fresh<T> {
   const _$_Fresh(
-      {required this.data, required this.isFresh, this.isNextPageAvailable})
+      {required this.data,
+      required this.isFresh,
+      required this.isNextPageAvailable})
       : super._();
 
   @override
@@ -116,7 +118,7 @@ class _$_Fresh<T> extends _Fresh<T> {
   @override
   final bool isFresh;
   @override
-  final bool? isNextPageAvailable;
+  final bool isNextPageAvailable;
 
   @override
   String toString() {
@@ -151,7 +153,7 @@ abstract class _Fresh<T> extends Fresh<T> {
   const factory _Fresh(
       {required final T data,
       required final bool isFresh,
-      final bool? isNextPageAvailable}) = _$_Fresh<T>;
+      required final bool isNextPageAvailable}) = _$_Fresh<T>;
   const _Fresh._() : super._();
 
   @override
@@ -159,7 +161,7 @@ abstract class _Fresh<T> extends Fresh<T> {
   @override
   bool get isFresh;
   @override
-  bool? get isNextPageAvailable;
+  bool get isNextPageAvailable;
   @override
   @JsonKey(ignore: true)
   _$$_FreshCopyWith<T, _$_Fresh<T>> get copyWith =>

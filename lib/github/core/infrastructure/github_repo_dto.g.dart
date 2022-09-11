@@ -17,7 +17,7 @@ class GithubRepoDTOAdapter extends TypeAdapter<_$_GithubRepoDTO> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$_GithubRepoDTO(
-      id: fields[0] as String,
+      id: fields[0] as int,
       owner: fields[1] as UserDTO,
       name: fields[2] as String,
       description: fields[3] as String,
@@ -64,7 +64,7 @@ class GithubRepoDTOAdapter extends TypeAdapter<_$_GithubRepoDTO> {
 
 _$_GithubRepoDTO _$$_GithubRepoDTOFromJson(Map<String, dynamic> json) =>
     _$_GithubRepoDTO(
-      id: json['id'] as String,
+      id: json['id'] as int,
       owner: UserDTO.fromJson(json['owner'] as Map<String, dynamic>),
       name: json['name'] as String,
       description: json['description'] as String? ?? '',
@@ -76,7 +76,7 @@ _$_GithubRepoDTO _$$_GithubRepoDTOFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_GithubRepoDTOToJson(_$_GithubRepoDTO instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'owner': instance.owner,
+      'owner': instance.owner.toJson(),
       'name': instance.name,
       'description': instance.description,
       'stargazers_count': instance.stargazerCount,

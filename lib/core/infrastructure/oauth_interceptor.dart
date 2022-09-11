@@ -3,14 +3,14 @@ import 'package:githubmate/auth/application/auth_notifier.dart';
 import 'package:githubmate/auth/infrastructure/github_authenticator.dart';
 
 class OAuth2Interceptor extends Interceptor {
-  OAuth2Interceptor(this._authenticator, this._authNotifier) {
-    otherDio.interceptors
+  OAuth2Interceptor(this._authenticator, this._authNotifier, this._dio) {
+    _dio.interceptors
         .add(InterceptorsWrapper(onRequest: onRequest, onError: onRetryError));
   }
 
   final GithubAuthenticator _authenticator;
   final AuthNotifier _authNotifier;
-  final otherDio = Dio();
+  final Dio _dio;
 
   @override
   Future<void> onRequest(
@@ -20,8 +20,13 @@ class OAuth2Interceptor extends Interceptor {
     final credentials = await _authenticator.getSignedInCredential();
     final modifiedOptions = options
       ..headers.addAll(credentials == null
-          ? {}
-          : {'Authorization': 'bearer ${credentials.accessToken}'});
+          ? {
+              'Accept': 'application/vnd.github.v3.html+json',
+            }
+          : {
+              'Accept': 'application/vnd.github.v3.html+json',
+              'Authorization': 'bearer ${credentials.accessToken}'
+            });
 
     handler.next(modifiedOptions);
   }
@@ -52,7 +57,7 @@ class OAuth2Interceptor extends Interceptor {
       method: requestOptions.method,
       headers: requestOptions.headers,
     );
-    return otherDio.request(requestOptions.path,
+    return _dio.request(requestOptions.path,
         data: requestOptions.data,
         queryParameters: requestOptions.queryParameters,
         options: options);

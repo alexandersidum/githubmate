@@ -13,8 +13,8 @@ class StarredRepoRepository {
   final StarredRepoRemoteService _remoteService;
   final StarredRepoLocalService _localService;
 
-  Future<Either<GithubFailure, Fresh<List<GithubRepo>>>> getStarredRepo(
-      {int page = 1}) async {
+  Future<Either<GithubFailure, Fresh<List<GithubRepo>>>> getStarredRepoPage(
+      int page) async {
     try {
       final response = await _remoteService.getStarredRepoPage(page);
       return right(await response.when(

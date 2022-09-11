@@ -5,6 +5,7 @@ import 'package:githubmate/auth/domain/auth_failure.dart';
 import 'package:githubmate/auth/infrastructure/credentials_storage/credential_storage.dart';
 import 'package:githubmate/core/infrastructure/dio_extension.dart';
 import 'package:githubmate/core/shared/encoders.dart';
+import 'package:githubmate/core/shared/log.dart';
 import 'package:http/http.dart' as http;
 import 'package:oauth2/oauth2.dart';
 
@@ -26,7 +27,6 @@ class GithubAuthenticator {
   static final revocationEndpoint =
       Uri.parse('https://api.github.com/applications/$_clientId/token');
   static final redirectUri = Uri.parse('http://localhost:3000/callback');
-  // static final redirectUri = Uri.parse('http://google.com/callback');
   static final scopes = ['read:user', 'repo'];
 
   Future<bool> get isSignedIn =>
@@ -43,7 +43,7 @@ class GithubAuthenticator {
         return refreshResult.fold(
             (failure) => null, (credential) => credential);
       }
-      return null;
+      return credentials;
     } on PlatformException {
       return null;
     }
@@ -84,9 +84,13 @@ class GithubAuthenticator {
         } on DioError catch (e) {
           if (e.isConnectionError) {
             // Ignore it so that signout still possible on offline user
+            Log.setLog("No Connection Logout", tag: "signOut");
           } else {
             // We didnt expect this error so need to rethrow
-            rethrow;
+            Log.setLog(
+                "Status Code : ${e.response?.statusCode} ,  Error Message : ${e.message}",
+                tag: "signOut");
+            // rethrow;
           }
         }
       }

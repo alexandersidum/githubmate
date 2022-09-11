@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GithubRepo {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   User get owner => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $GithubRepoCopyWith<$Res> {
           GithubRepo value, $Res Function(GithubRepo) then) =
       _$GithubRepoCopyWithImpl<$Res>;
   $Res call(
-      {String id,
+      {int id,
       User owner,
       String name,
       String description,
@@ -68,7 +68,7 @@ class _$GithubRepoCopyWithImpl<$Res> implements $GithubRepoCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       owner: owner == freezed
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
@@ -112,7 +112,7 @@ abstract class _$$_GithubRepoCopyWith<$Res>
       __$$_GithubRepoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
+      {int id,
       User owner,
       String name,
       String description,
@@ -148,7 +148,7 @@ class __$$_GithubRepoCopyWithImpl<$Res> extends _$GithubRepoCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       owner: owner == freezed
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
@@ -191,7 +191,7 @@ class _$_GithubRepo extends _GithubRepo {
       : super._();
 
   @override
-  final String id;
+  final int id;
   @override
   final User owner;
   @override
@@ -246,7 +246,7 @@ class _$_GithubRepo extends _GithubRepo {
 
 abstract class _GithubRepo extends GithubRepo {
   const factory _GithubRepo(
-      {required final String id,
+      {required final int id,
       required final User owner,
       required final String name,
       required final String description,
@@ -256,7 +256,7 @@ abstract class _GithubRepo extends GithubRepo {
   const _GithubRepo._() : super._();
 
   @override
-  String get id;
+  int get id;
   @override
   User get owner;
   @override

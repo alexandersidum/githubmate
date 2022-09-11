@@ -7,11 +7,6 @@ import 'github/core/infrastructure/github_repo_dto.dart';
 import 'github/core/infrastructure/user_dto.dart';
 
 Future<void> initializeHive() async {
-  final boxList = [
-    GithubHeaders.boxName,
-    UserDTO.boxName,
-    GithubRepoDTO.boxName
-  ];
   if (kIsWeb) {
     await Hive.initFlutter();
   } else {
@@ -28,7 +23,4 @@ Future<void> initializeHive() async {
   await Hive.openLazyBox<GithubHeaders>(GithubHeaders.boxName);
   await Hive.openLazyBox<UserDTO>(UserDTO.boxName);
   await Hive.openBox<GithubRepoDTO>(GithubRepoDTO.boxName);
-
-  // await Future.forEach(
-  //     boxList, (String element) async => await Hive.openLazyBox(element));
 }

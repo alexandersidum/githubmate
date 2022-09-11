@@ -14,7 +14,7 @@ class UserDTO with _$UserDTO {
       _$UserDTOFromJson(json);
   @HiveType(typeId: 0, adapterName: 'UserDTOAdapter')
   const factory UserDTO({
-    @HiveField(0) @JsonKey(name: "id") required String id,
+    @HiveField(0) @JsonKey(name: "id") required int id,
     @HiveField(1) @JsonKey(name: "login") required String name,
     @HiveField(2) @JsonKey(name: "avatar_url") required String avatar,
   }) = _UserDTO;

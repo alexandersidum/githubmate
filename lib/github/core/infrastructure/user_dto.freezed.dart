@@ -22,7 +22,7 @@ UserDTO _$UserDTOFromJson(Map<String, dynamic> json) {
 mixin _$UserDTO {
   @HiveField(0)
   @JsonKey(name: "id")
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @HiveField(1)
   @JsonKey(name: "login")
   String get name => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $UserDTOCopyWith<$Res> {
   factory $UserDTOCopyWith(UserDTO value, $Res Function(UserDTO) then) =
       _$UserDTOCopyWithImpl<$Res>;
   $Res call(
-      {@HiveField(0) @JsonKey(name: "id") String id,
+      {@HiveField(0) @JsonKey(name: "id") int id,
       @HiveField(1) @JsonKey(name: "login") String name,
       @HiveField(2) @JsonKey(name: "avatar_url") String avatar});
 }
@@ -63,7 +63,7 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,7 @@ abstract class _$$_UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       __$$_UserDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@HiveField(0) @JsonKey(name: "id") String id,
+      {@HiveField(0) @JsonKey(name: "id") int id,
       @HiveField(1) @JsonKey(name: "login") String name,
       @HiveField(2) @JsonKey(name: "avatar_url") String avatar});
 }
@@ -107,7 +107,7 @@ class __$$_UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class _$_UserDTO extends _UserDTO {
   @override
   @HiveField(0)
   @JsonKey(name: "id")
-  final String id;
+  final int id;
   @override
   @HiveField(1)
   @JsonKey(name: "login")
@@ -186,7 +186,7 @@ abstract class _UserDTO extends UserDTO {
   const factory _UserDTO(
       {@HiveField(0)
       @JsonKey(name: "id")
-          required final String id,
+          required final int id,
       @HiveField(1)
       @JsonKey(name: "login")
           required final String name,
@@ -200,7 +200,7 @@ abstract class _UserDTO extends UserDTO {
   @override
   @HiveField(0)
   @JsonKey(name: "id")
-  String get id;
+  int get id;
   @override
   @HiveField(1)
   @JsonKey(name: "login")

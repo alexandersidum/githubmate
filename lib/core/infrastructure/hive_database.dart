@@ -25,7 +25,7 @@ class HiveDatabase {
 
   static Future<void> putAllData<T>(
       {required String boxName, required Map<dynamic, T> data}) async {
-    final box = Hive.lazyBox<T>(boxName);
+    final box = Hive.box<T>(boxName);
     await box.putAll(data);
   }
 

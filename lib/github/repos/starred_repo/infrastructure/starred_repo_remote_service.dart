@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:githubmate/core/infrastructure/dio_extension.dart';
 import 'package:githubmate/core/infrastructure/network_exceptions.dart';
 import 'package:githubmate/core/infrastructure/remote_response.dart';
+import 'package:githubmate/core/shared/log.dart';
 import 'package:githubmate/github/core/infrastructure/github_headers.dart';
 import 'package:githubmate/github/core/infrastructure/github_headers_cache.dart';
 import 'package:githubmate/github/core/infrastructure/github_repo_dto.dart';
@@ -20,8 +21,10 @@ class StarredRepoRemoteService {
 
   Future<RemoteResponse<List<GithubRepoDTO>>> getStarredRepoPage(
       int page) async {
-    final requestUri = Uri.https("api.github.com", "/user/starred",
-        {"page": page, "per_page": PaginationConfig.itemsPerPage});
+    final requestUri = Uri.https("api.github.com", "/user/starred", {
+      "page": page.toString(),
+      "per_page": PaginationConfig.itemsPerPage.toString(),
+    });
 
     final prevHeader = await _headersCache.getHeader(requestUri);
 
@@ -39,6 +42,9 @@ class StarredRepoRemoteService {
       if (response.statusCode == 200) {
         final newHeaders = GithubHeaders.parse(response);
         await _headersCache.saveHeader(requestUri, newHeaders);
+
+        Log.setLog("Response Data => ${response.data}",
+            tag: "getStarredRepoPage");
         return RemoteResponse.withNewData(
           List<Map<String, dynamic>>.from(response.data)
               .map((e) => GithubRepoDTO.fromJson(e))

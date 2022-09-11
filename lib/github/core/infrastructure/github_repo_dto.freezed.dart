@@ -21,7 +21,7 @@ GithubRepoDTO _$GithubRepoDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GithubRepoDTO {
   @HiveField(0)
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @HiveField(1)
   UserDTO get owner => throw _privateConstructorUsedError;
   @HiveField(2)
@@ -50,7 +50,7 @@ abstract class $GithubRepoDTOCopyWith<$Res> {
       _$GithubRepoDTOCopyWithImpl<$Res>;
   $Res call(
       {@HiveField(0)
-          String id,
+          int id,
       @HiveField(1)
           UserDTO owner,
       @HiveField(2)
@@ -92,7 +92,7 @@ class _$GithubRepoDTOCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       owner: owner == freezed
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ abstract class _$$_GithubRepoDTOCopyWith<$Res>
   @override
   $Res call(
       {@HiveField(0)
-          String id,
+          int id,
       @HiveField(1)
           UserDTO owner,
       @HiveField(2)
@@ -182,7 +182,7 @@ class __$$_GithubRepoDTOCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       owner: owner == freezed
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
@@ -239,7 +239,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
 
   @override
   @HiveField(0)
-  final String id;
+  final int id;
   @override
   @HiveField(1)
   final UserDTO owner;
@@ -311,7 +311,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
 abstract class _GithubRepoDTO extends GithubRepoDTO {
   const factory _GithubRepoDTO(
       {@HiveField(0)
-          required final String id,
+          required final int id,
       @HiveField(1)
           required final UserDTO owner,
       @HiveField(2)
@@ -333,7 +333,7 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
 
   @override
   @HiveField(0)
-  String get id;
+  int get id;
   @override
   @HiveField(1)
   UserDTO get owner;

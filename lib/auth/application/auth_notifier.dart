@@ -24,7 +24,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final GithubAuthenticator _authenticator;
 
   Future<void> checkAuth() async {
+    Log.setLog("Start checkAuth", tag: "checkAuth");
+
     final isSignedIn = await _authenticator.isSignedIn;
+    Log.setLog("is signed in ? $isSignedIn", tag: "checkAuth");
     state = isSignedIn
         ? const AuthState.authenticated()
         : const AuthState.unauthenticated();
@@ -32,10 +35,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   Future<void> signIn(AuthorizationCallback authorizationCallback) async {
     final grant = _authenticator.createAuthorizationGrant();
-    Log.setLog("Start SignIn");
+    Log.setLog("Start SignIn", tag: "signIn");
     final responseUri =
         await authorizationCallback(_authenticator.getAuthorizationUrl(grant));
-    Log.setLog("Response Uri => $responseUri");
+    Log.setLog("Response Uri => $responseUri", tag: "signIn");
     final result = await _authenticator.handleAuthorizationResponse(
         grant, responseUri.queryParameters);
     state = result.fold((l) => AuthState.failure(l.toString()),

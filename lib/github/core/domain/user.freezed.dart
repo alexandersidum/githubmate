@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$User {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
 
@@ -28,7 +28,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String id, String name, String avatar});
+  $Res call({int id, String name, String avatar});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -67,7 +67,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String avatar});
+  $Res call({int id, String name, String avatar});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ class _$_User extends _User {
       : super._();
 
   @override
-  final String id;
+  final int id;
   @override
   final String name;
   @override
@@ -145,13 +145,13 @@ class _$_User extends _User {
 
 abstract class _User extends User {
   const factory _User(
-      {required final String id,
+      {required final int id,
       required final String name,
       required final String avatar}) = _$_User;
   const _User._() : super._();
 
   @override
-  String get id;
+  int get id;
   @override
   String get name;
   @override

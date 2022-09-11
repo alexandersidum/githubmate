@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:githubmate/auth/shared/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../../core/presentation/route/app_router.gr.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -34,17 +37,23 @@ class SignInPage extends ConsumerWidget {
                 ref.read(authNotifierProvider.notifier).signIn((uri) {
                   //Run Webview
                   final completer = Completer<Uri>();
-                  // AutoRouter.of(context).push(AuthorizationRoute(
-                  //   authorizationUrl: uri,
-                  //   onAuthorizationRedirectAttempt: (redirectedUri) {
-                  //     completer.complete(redirectedUri);
-                  //   },
-                  // ));
+                  AutoRouter.of(context).push(AuthorizationRoute(
+                    authorizationUrl: uri,
+                    onAuthorizationRedirectAttempt: (redirectedUri) {
+                      completer.complete(redirectedUri);
+                    },
+                  ));
                   return completer.future;
                 });
               },
-              child: const Text("Sign In"),
-              style: ElevatedButton.styleFrom(primary: Colors.green),
+              child: const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
             ),
           )
         ],

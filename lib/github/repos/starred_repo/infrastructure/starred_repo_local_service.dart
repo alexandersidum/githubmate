@@ -1,5 +1,6 @@
 import 'package:githubmate/core/infrastructure/hive_database.dart';
 import 'package:githubmate/core/infrastructure/list_extension.dart';
+import 'package:githubmate/core/shared/log.dart';
 import 'package:githubmate/github/core/infrastructure/github_repo_dto.dart';
 import 'package:githubmate/github/core/infrastructure/pagination_config.dart';
 
@@ -18,16 +19,22 @@ class StarredRepoLocalService {
   }
 
   Future<List<GithubRepoDTO>> readPage(int page) async {
+    Log.setLog("Page : $page ", tag: "readPage");
     if (page > 20) {
+      Log.setLog("Page : $page , Page execesive > 20", tag: "readPage");
       return [];
     }
     final result = await HiveDatabase.getDataFromBox<GithubRepoDTO>(
         boxName: GithubRepoDTO.boxName);
-
+    if (result == null) {
+      Log.setLog("Page : $page , Result is null", tag: "readPage");
+      return [];
+    }
+    Log.setLog("Page : $page , Result unfiltered : ${result.length}",
+        tag: "readPage");
     return result
-            ?.take(PaginationConfig.itemsPerPage)
-            .skip(page * PaginationConfig.itemsPerPage)
-            .toList() ??
-        [];
+        .skip((page - 1) * PaginationConfig.itemsPerPage)
+        .take(PaginationConfig.itemsPerPage)
+        .toList();
   }
 }

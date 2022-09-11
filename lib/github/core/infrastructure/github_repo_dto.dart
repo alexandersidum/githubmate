@@ -21,7 +21,7 @@ class GithubRepoDTO with _$GithubRepoDTO {
       _$GithubRepoDTOFromJson(json);
   @HiveType(typeId: 1, adapterName: 'GithubRepoDTOAdapter')
   const factory GithubRepoDTO({
-    @HiveField(0) required String id,
+    @HiveField(0) required int id,
     @HiveField(1) required UserDTO owner,
     @HiveField(2) required String name,
     @HiveField(3)
