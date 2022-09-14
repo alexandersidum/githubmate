@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:githubmate/github/core/shared/providers.dart';
 import 'package:githubmate/github/repos/core/presentation/repo_list_tile.dart';
+import 'package:githubmate/github/repos/core/presentation/repos_loading_tile.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PaginatedRepoListView extends StatefulWidget {
@@ -16,6 +17,7 @@ class _PaginatedRepoListViewState extends State<PaginatedRepoListView> {
     return Consumer(builder: (context, ref, child) {
       final state = ref.watch(starredRepoNotifierProvider);
       return ListView.builder(
+          padding: const EdgeInsets.only(top: 10),
           itemCount: state.when(
             initial: (repoList) => 0,
             loading: (repoList, additionalPage) =>
@@ -24,10 +26,24 @@ class _PaginatedRepoListViewState extends State<PaginatedRepoListView> {
             loadFailure: (repoList, failure) => repoList.data.length + 1,
           ),
           itemBuilder: ((context, index) {
-            if (index >= state.repoList.data.length) {
-              return const Text("Load");
-            }
-            return RepoListTile(repo: state.repoList.data[index]);
+            return state.map(
+              initial: (val) => RepoListTile(repo: val.repoList.data[index]),
+              loading: (val) {
+                if (index > val.repoList.data.length) {
+                  return const RepoLoadingTile();
+                }
+                return RepoListTile(repo: val.repoList.data[index]);
+              },
+              loadSuccess: (val) =>
+                  RepoListTile(repo: val.repoList.data[index]),
+              loadFailure: (val) {
+                if (index > val.repoList.data.length) {
+                  //TODO Failure Repo Tile
+                  return const RepoLoadingTile();
+                }
+                return RepoListTile(repo: val.repoList.data[index]);
+              },
+            );
           }));
     });
   }
