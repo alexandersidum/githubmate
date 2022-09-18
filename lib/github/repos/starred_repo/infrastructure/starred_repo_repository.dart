@@ -22,7 +22,8 @@ class StarredRepoRepository {
               data: await _localService
                   .readPage(page)
                   .then((value) => value.toDomain()),
-              isNextPageAvailable: page < maxPage),
+              isNextPageAvailable:
+                  page < await _localService.getMaximumPageCount()),
           notModified: (maxPage) async => Fresh.yes(
               data: await _localService
                   .readPage(page)

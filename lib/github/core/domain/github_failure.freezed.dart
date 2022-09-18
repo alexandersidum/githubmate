@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GithubFailure {
+  int? get statusCode => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() api,
+    required TResult Function(int? statusCode) api,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? api,
+    TResult Function(int? statusCode)? api,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? api,
+    TResult Function(int? statusCode)? api,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$GithubFailure {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GithubFailureCopyWith<GithubFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,7 @@ abstract class $GithubFailureCopyWith<$Res> {
   factory $GithubFailureCopyWith(
           GithubFailure value, $Res Function(GithubFailure) then) =
       _$GithubFailureCopyWithImpl<$Res>;
+  $Res call({int? statusCode});
 }
 
 /// @nodoc
@@ -65,12 +71,26 @@ class _$GithubFailureCopyWithImpl<$Res>
   final GithubFailure _value;
   // ignore: unused_field
   final $Res Function(GithubFailure) _then;
+
+  @override
+  $Res call({
+    Object? statusCode = freezed,
+  }) {
+    return _then(_value.copyWith(
+      statusCode: statusCode == freezed
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_ApiCopyWith<$Res> {
+abstract class _$$_ApiCopyWith<$Res> implements $GithubFailureCopyWith<$Res> {
   factory _$$_ApiCopyWith(_$_Api value, $Res Function(_$_Api) then) =
       __$$_ApiCopyWithImpl<$Res>;
+  @override
+  $Res call({int? statusCode});
 }
 
 /// @nodoc
@@ -81,51 +101,75 @@ class __$$_ApiCopyWithImpl<$Res> extends _$GithubFailureCopyWithImpl<$Res>
 
   @override
   _$_Api get _value => super._value as _$_Api;
+
+  @override
+  $Res call({
+    Object? statusCode = freezed,
+  }) {
+    return _then(_$_Api(
+      statusCode == freezed
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Api extends _Api {
-  const _$_Api() : super._();
+  const _$_Api([this.statusCode]) : super._();
+
+  @override
+  final int? statusCode;
 
   @override
   String toString() {
-    return 'GithubFailure.api()';
+    return 'GithubFailure.api(statusCode: $statusCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Api);
+        (other.runtimeType == runtimeType &&
+            other is _$_Api &&
+            const DeepCollectionEquality()
+                .equals(other.statusCode, statusCode));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(statusCode));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ApiCopyWith<_$_Api> get copyWith =>
+      __$$_ApiCopyWithImpl<_$_Api>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() api,
+    required TResult Function(int? statusCode) api,
   }) {
-    return api();
+    return api(statusCode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? api,
+    TResult Function(int? statusCode)? api,
   }) {
-    return api?.call();
+    return api?.call(statusCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? api,
+    TResult Function(int? statusCode)? api,
     required TResult orElse(),
   }) {
     if (api != null) {
-      return api();
+      return api(statusCode);
     }
     return orElse();
   }
@@ -160,6 +204,12 @@ class _$_Api extends _Api {
 }
 
 abstract class _Api extends GithubFailure {
-  const factory _Api() = _$_Api;
+  const factory _Api([final int? statusCode]) = _$_Api;
   const _Api._() : super._();
+
+  @override
+  int? get statusCode;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApiCopyWith<_$_Api> get copyWith => throw _privateConstructorUsedError;
 }

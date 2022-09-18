@@ -48,7 +48,7 @@ class HiveDatabase {
     return output;
   }
 
-  static Future<Iterable<T>?> getDataFromBox<T>(
+  static Future<Iterable<T>> getDataFromBox<T>(
       {required String boxName}) async {
     final box = Hive.box<T>(boxName);
     return box.values;

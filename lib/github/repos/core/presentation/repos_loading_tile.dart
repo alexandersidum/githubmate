@@ -10,14 +10,16 @@ class RepoLoadingTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey.shade400,
-      highlightColor: Colors.grey.shade300,
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade200,
       child: ListTile(
+        dense: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
         leading: const CircleAvatar(
           radius: 20,
         ),
         title: Align(
+          alignment: Alignment.centerLeft,
           child: Container(
             width: 110,
             height: 14,
@@ -28,8 +30,9 @@ class RepoLoadingTile extends StatelessWidget {
           ),
         ),
         subtitle: Align(
+          alignment: Alignment.centerLeft,
           child: Container(
-            width: 110,
+            width: 250,
             height: 14,
             decoration: BoxDecoration(
               color: Colors.white,

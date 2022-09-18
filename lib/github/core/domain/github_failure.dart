@@ -5,5 +5,6 @@ part 'github_failure.freezed.dart';
 @freezed
 class GithubFailure with _$GithubFailure {
   const GithubFailure._();
-  const factory GithubFailure.api() = _Api;
+  //TODO: Response Code
+  const factory GithubFailure.api([int? statusCode]) = _Api;
 }

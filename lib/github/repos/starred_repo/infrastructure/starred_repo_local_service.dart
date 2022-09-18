@@ -37,4 +37,14 @@ class StarredRepoLocalService {
         .take(PaginationConfig.itemsPerPage)
         .toList();
   }
+
+  Future<int> getMaximumPageCount() async {
+    final result = await HiveDatabase.getDataFromBox<GithubRepoDTO>(
+        boxName: GithubRepoDTO.boxName);
+
+    final maxPage = (result.length / PaginationConfig.itemsPerPage).ceil();
+    Log.setLog("Local Max Page : $maxPage", tag: "getMaximumPageCount");
+
+    return maxPage;
+  }
 }
