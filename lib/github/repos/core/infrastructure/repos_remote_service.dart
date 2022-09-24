@@ -8,7 +8,9 @@ import 'package:githubmate/github/core/infrastructure/github_headers_cache.dart'
 import 'package:githubmate/github/core/infrastructure/github_repo_dto.dart';
 
 abstract class RepoRemoteService {
-  RepoRemoteService(this._dio, this._headersCache);
+  RepoRemoteService(Dio dio, GithubHeadersCache headersCache)
+      : _dio = dio,
+        _headersCache = headersCache;
 
   final acceptHeader = "application/vnd.github.v3.html+json";
 
@@ -18,7 +20,7 @@ abstract class RepoRemoteService {
   Future<RemoteResponse<List<GithubRepoDTO>>> getPage(Uri requestUri,
       {required List<dynamic> Function(dynamic json) jsonDataSelector}) async {
     final prevHeader = await _headersCache.getHeader(requestUri);
-
+    // const prevHeader = null;
     try {
       final response = await _dio.getUri(requestUri,
           options: Options(headers: {
@@ -26,8 +28,10 @@ abstract class RepoRemoteService {
             "If-None-Match": prevHeader?.etag ?? '',
           }));
       if (response.statusCode == 304) {
+        Log.setLog("304 Not Modified Response Data => ${response.data}",
+            tag: "getPage");
         return RemoteResponse.notModified(
-            maxPage: prevHeader?.link?.maxPage ?? 0);
+            maxPage: prevHeader?.link?.maxPage ?? 1);
       }
       if (response.statusCode == 200) {
         final newHeaders = GithubHeaders.parse(response);

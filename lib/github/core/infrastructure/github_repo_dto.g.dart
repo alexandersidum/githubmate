@@ -22,7 +22,7 @@ class GithubRepoDTOAdapter extends TypeAdapter<_$_GithubRepoDTO> {
       name: fields[2] as String,
       description: fields[3] as String,
       stargazerCount: fields[4] as int,
-      language: fields[5] as String,
+      language: fields[5] as String?,
       visibility: fields[6] as String,
     );
   }
@@ -69,7 +69,7 @@ _$_GithubRepoDTO _$$_GithubRepoDTOFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       description: json['description'] as String? ?? '',
       stargazerCount: json['stargazers_count'] as int,
-      language: json['language'] as String,
+      language: json['language'] as String?,
       visibility: json['visibility'] as String,
     );
 

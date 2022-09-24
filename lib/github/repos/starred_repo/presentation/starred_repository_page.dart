@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:githubmate/auth/shared/providers.dart';
+import 'package:githubmate/core/presentation/route/app_router.gr.dart';
 import 'package:githubmate/github/core/shared/providers.dart';
 import 'package:githubmate/github/repos/core/presentation/paginated_repo_list_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,12 +33,26 @@ class StarredRepositoryPageState extends ConsumerState<StarredRepositoryPage> {
               Padding(
                 padding: const EdgeInsets.only(right: 15),
                 child: InkWell(
+                    onTap: () => AutoRouter.of(context)
+                        .push(SearchRepositoryRoute(keyword: "react")),
+                    child: const Icon(MdiIcons.searchWeb)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: InkWell(
                     onTap: () =>
                         ref.read(authNotifierProvider.notifier).signOut(),
                     child: const Icon(MdiIcons.logout)),
-              )
+              ),
             ],
             title: const Text("Starred Repository")),
-        body: const PaginatedRepoListView());
+        body: PaginatedRepoListView(
+          provider: starredRepoNotifierProvider,
+          nextPageCallback: (() {
+            ref
+                .read(starredRepoNotifierProvider.notifier)
+                .getNextStarredRepoPage();
+          }),
+        ));
   }
 }

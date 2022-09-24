@@ -30,7 +30,7 @@ class GithubRepoDTO with _$GithubRepoDTO {
     @HiveField(4)
     @JsonKey(name: 'stargazers_count')
         required int stargazerCount,
-    @HiveField(5) required String language,
+    @HiveField(5) required String? language,
     @HiveField(6) required String visibility,
   }) = _GithubRepoDTO;
   const GithubRepoDTO._();

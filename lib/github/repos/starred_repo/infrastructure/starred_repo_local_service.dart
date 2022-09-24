@@ -12,10 +12,13 @@ class StarredRepoLocalService {
     if (page > 20) {
       return;
     }
+    Log.setLog("Page : $page , Upserting Page", tag: "upsertPage");
     final mapData =
         githubList.toPagedMap(page, pageLength: PaginationConfig.itemsPerPage);
+    Log.setLog("mapData : $mapData", tag: "upsertPage");
     await HiveDatabase.putAllData<GithubRepoDTO>(
         boxName: GithubRepoDTO.boxName, data: mapData);
+    Log.setLog("mapData After Put : $mapData", tag: "upsertPage");
   }
 
   Future<List<GithubRepoDTO>> readPage(int page) async {

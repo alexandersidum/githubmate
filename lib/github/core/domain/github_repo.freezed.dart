@@ -21,7 +21,7 @@ mixin _$GithubRepo {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get stargazerCount => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
   String get visibility => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $GithubRepoCopyWith<$Res> {
       String name,
       String description,
       int stargazerCount,
-      String language,
+      String? language,
       String visibility});
 
   $UserCopyWith<$Res> get owner;
@@ -88,7 +88,7 @@ class _$GithubRepoCopyWithImpl<$Res> implements $GithubRepoCopyWith<$Res> {
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ abstract class _$$_GithubRepoCopyWith<$Res>
       String name,
       String description,
       int stargazerCount,
-      String language,
+      String? language,
       String visibility});
 
   @override
@@ -168,7 +168,7 @@ class __$$_GithubRepoCopyWithImpl<$Res> extends _$GithubRepoCopyWithImpl<$Res>
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -201,7 +201,7 @@ class _$_GithubRepo extends _GithubRepo {
   @override
   final int stargazerCount;
   @override
-  final String language;
+  final String? language;
   @override
   final String visibility;
 
@@ -251,7 +251,7 @@ abstract class _GithubRepo extends GithubRepo {
       required final String name,
       required final String description,
       required final int stargazerCount,
-      required final String language,
+      required final String? language,
       required final String visibility}) = _$_GithubRepo;
   const _GithubRepo._() : super._();
 
@@ -266,7 +266,7 @@ abstract class _GithubRepo extends GithubRepo {
   @override
   int get stargazerCount;
   @override
-  String get language;
+  String? get language;
   @override
   String get visibility;
   @override

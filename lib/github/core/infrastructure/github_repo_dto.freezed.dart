@@ -33,7 +33,7 @@ mixin _$GithubRepoDTO {
   @JsonKey(name: 'stargazers_count')
   int get stargazerCount => throw _privateConstructorUsedError;
   @HiveField(5)
-  String get language => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
   @HiveField(6)
   String get visibility => throw _privateConstructorUsedError;
 
@@ -62,7 +62,7 @@ abstract class $GithubRepoDTOCopyWith<$Res> {
       @JsonKey(name: 'stargazers_count')
           int stargazerCount,
       @HiveField(5)
-          String language,
+          String? language,
       @HiveField(6)
           String visibility});
 
@@ -112,7 +112,7 @@ class _$GithubRepoDTOCopyWithImpl<$Res>
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ abstract class _$$_GithubRepoDTOCopyWith<$Res>
       @JsonKey(name: 'stargazers_count')
           int stargazerCount,
       @HiveField(5)
-          String language,
+          String? language,
       @HiveField(6)
           String visibility});
 
@@ -202,7 +202,7 @@ class __$$_GithubRepoDTOCopyWithImpl<$Res>
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -256,7 +256,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
   final int stargazerCount;
   @override
   @HiveField(5)
-  final String language;
+  final String? language;
   @override
   @HiveField(6)
   final String visibility;
@@ -323,7 +323,7 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
       @JsonKey(name: 'stargazers_count')
           required final int stargazerCount,
       @HiveField(5)
-          required final String language,
+          required final String? language,
       @HiveField(6)
           required final String visibility}) = _$_GithubRepoDTO;
   const _GithubRepoDTO._() : super._();
@@ -350,7 +350,7 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
   int get stargazerCount;
   @override
   @HiveField(5)
-  String get language;
+  String? get language;
   @override
   @HiveField(6)
   String get visibility;

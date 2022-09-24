@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:githubmate/core/presentation/toasts.dart';
 import 'package:githubmate/core/shared/log.dart';
 import 'package:githubmate/github/core/shared/providers.dart';
+import 'package:githubmate/github/repos/core/application/pagination_state_notifier.dart';
 import 'package:githubmate/github/repos/core/presentation/failure_repo_tile.dart';
 import 'package:githubmate/github/repos/core/presentation/no_result_display.dart';
 import 'package:githubmate/github/repos/core/presentation/repo_list_tile.dart';
 import 'package:githubmate/github/repos/core/presentation/repos_loading_tile.dart';
-import 'package:githubmate/github/repos/starred_repo/application/starred_repo_state_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PaginatedRepoListView extends ConsumerStatefulWidget {
-  const PaginatedRepoListView({super.key});
+  const PaginatedRepoListView(
+      {super.key, required this.provider, required this.nextPageCallback});
+
+  final StateNotifierProvider<PaginatedRepoNotifier, PaginatedRepoState>
+      provider;
+  final Function() nextPageCallback;
 
   @override
   ConsumerState<PaginatedRepoListView> createState() =>
@@ -30,6 +35,7 @@ class _PaginatedRepoListViewState extends ConsumerState<PaginatedRepoListView> {
 
         if (canLoadNextPage && metrics.pixels >= limit) {
           canLoadNextPage = false;
+          widget.nextPageCallback();
           ref
               .read(starredRepoNotifierProvider.notifier)
               .getNextStarredRepoPage();
@@ -37,8 +43,7 @@ class _PaginatedRepoListViewState extends ConsumerState<PaginatedRepoListView> {
         return false;
       },
       child: Consumer(builder: (context, ref, child) {
-        ref.listen<StarredRepoState>(starredRepoNotifierProvider,
-            (previous, state) {
+        ref.listen<PaginatedRepoState>(widget.provider, (previous, state) {
           if (previous == state) {
             return;
           }
@@ -54,7 +59,7 @@ class _PaginatedRepoListViewState extends ConsumerState<PaginatedRepoListView> {
                   canLoadNextPage = x.repoList.isNextPageAvailable,
               loadFailure: (x) => canLoadNextPage = false);
         });
-        final state = ref.watch(starredRepoNotifierProvider);
+        final state = ref.watch(widget.provider);
         return state.maybeMap(
                 loadSuccess: (val) => val.repoList.data.isEmpty,
                 orElse: () => false)

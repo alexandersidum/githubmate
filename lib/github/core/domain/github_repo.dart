@@ -12,7 +12,7 @@ class GithubRepo with _$GithubRepo {
     required String name,
     required String description,
     required int stargazerCount,
-    required String language,
+    required String? language,
     required String visibility,
   }) = _GithubRepo;
 }
