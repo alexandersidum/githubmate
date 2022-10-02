@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:githubmate/auth/shared/providers.dart';
+import 'package:githubmate/core/presentation/route/app_router.gr.dart';
 import 'package:githubmate/github/core/shared/providers.dart';
 import 'package:githubmate/github/repos/core/presentation/paginated_repo_list_view.dart';
+import 'package:githubmate/search_history/presentation/search_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SearchRepositoryPage extends ConsumerStatefulWidget {
   const SearchRepositoryPage({super.key, required this.keyword});
@@ -26,19 +28,14 @@ class _SearchRepositoryPageState extends ConsumerState<SearchRepositoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            centerTitle: false,
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 15),
-                child: InkWell(
-                    onTap: () =>
-                        ref.read(authNotifierProvider.notifier).signOut(),
-                    child: const Icon(MdiIcons.logout)),
-              )
-            ],
-            title: const Text("Searched Repository")),
+    return SearchBar(
+        title: widget.keyword,
+        onSignOutButtonPressed: () {
+          ref.read(authNotifierProvider.notifier).signOut();
+        },
+        onShouldNavigateToResultPage: (keyword) => AutoRouter.of(context)
+            .push(SearchRepositoryRoute(keyword: keyword)),
+        hint: 'Search repository..',
         body: PaginatedRepoListView(
           provider: searchedRepoNotifierProvider,
           nextPageCallback: (() {

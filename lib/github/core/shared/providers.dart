@@ -26,11 +26,11 @@ final githubStarredRepoRepositoryProvider =
           ref.watch(githubStarredLocalServiceProvider),
         ));
 
-final starredRepoNotifierProvider =
-    StateNotifierProvider<StarredRepoStateNotifier, PaginatedRepoState>(
-        (ref) => StarredRepoStateNotifier(
-              ref.watch(githubStarredRepoRepositoryProvider),
-            ));
+final starredRepoNotifierProvider = AutoDisposeStateNotifierProvider<
+        StarredRepoStateNotifier, PaginatedRepoState>(
+    (ref) => StarredRepoStateNotifier(
+          ref.watch(githubStarredRepoRepositoryProvider),
+        ));
 
 final githubSearcheddRemoteServiceProvider =
     Provider<SearchedRepoRemoteService>((ref) => SearchedRepoRemoteService(
@@ -41,8 +41,8 @@ final githubSearcheddRepoRepositoryProvider =
           ref.watch(githubSearcheddRemoteServiceProvider),
         ));
 
-final searchedRepoNotifierProvider =
-    StateNotifierProvider<SearchedRepoStateNotifier, PaginatedRepoState>(
-        (ref) => SearchedRepoStateNotifier(
-              ref.watch(githubSearcheddRepoRepositoryProvider),
-            ));
+final searchedRepoNotifierProvider = AutoDisposeStateNotifierProvider<
+        SearchedRepoStateNotifier, PaginatedRepoState>(
+    (ref) => SearchedRepoStateNotifier(
+          ref.watch(githubSearcheddRepoRepositoryProvider),
+        ));

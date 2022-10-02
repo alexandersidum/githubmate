@@ -19,7 +19,7 @@ class GithubHeaders with _$GithubHeaders {
             : PaginationLink.parse(link.split(","),
                 requestUrl: response.requestOptions.uri.toString()));
   }
-  @HiveType(typeId: 2, adapterName: 'GithubHeadersAdapter')
+  @HiveType(typeId: 2, adapterName: "GithubHeadersAdapter")
   const factory GithubHeaders({
     @HiveField(0) String? etag,
     @HiveField(1) PaginationLink? link,

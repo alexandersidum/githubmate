@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:githubmate/search_history/infrastructure/search_history_repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -23,4 +24,5 @@ Future<void> initializeHive() async {
   await Hive.openLazyBox<GithubHeaders>(GithubHeaders.boxName);
   await Hive.openLazyBox<UserDTO>(UserDTO.boxName);
   await Hive.openBox<GithubRepoDTO>(GithubRepoDTO.boxName);
+  await Hive.openBox<String>(SearchHistoryRepository.boxName);
 }

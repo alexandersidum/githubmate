@@ -25,7 +25,7 @@ class GithubRepoDTO with _$GithubRepoDTO {
     @HiveField(1) required UserDTO owner,
     @HiveField(2) required String name,
     @HiveField(3)
-    @JsonKey(name: 'description', defaultValue: '')
+    @JsonKey(name: 'description', defaultValue: "")
         required String description,
     @HiveField(4)
     @JsonKey(name: 'stargazers_count')

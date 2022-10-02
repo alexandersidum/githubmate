@@ -123,7 +123,7 @@ class __$$_GithubHeadersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 2, adapterName: 'GithubHeadersAdapter')
+@HiveType(typeId: 2, adapterName: "GithubHeadersAdapter")
 class _$_GithubHeaders extends _GithubHeaders {
   const _$_GithubHeaders({@HiveField(0) this.etag, @HiveField(1) this.link})
       : super._();

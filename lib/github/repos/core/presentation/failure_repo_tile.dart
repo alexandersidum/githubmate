@@ -5,10 +5,11 @@ class RepoFailureTile extends StatelessWidget {
   const RepoFailureTile({
     super.key,
     required this.failure,
+    required this.onRefresh,
   });
 
   final GithubFailure failure;
-
+  final Function() onRefresh;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -29,10 +30,7 @@ class RepoFailureTile extends StatelessWidget {
           height: double.infinity,
           child: Icon(Icons.warning),
         ),
-        trailing: IconButton(
-            onPressed: () {
-              //TODO Refresh
-            },
-            icon: const Icon(Icons.refresh)));
+        trailing:
+            IconButton(onPressed: onRefresh, icon: const Icon(Icons.refresh)));
   }
 }

@@ -27,7 +27,7 @@ mixin _$GithubRepoDTO {
   @HiveField(2)
   String get name => throw _privateConstructorUsedError;
   @HiveField(3)
-  @JsonKey(name: 'description', defaultValue: '')
+  @JsonKey(name: 'description', defaultValue: "")
   String get description => throw _privateConstructorUsedError;
   @HiveField(4)
   @JsonKey(name: 'stargazers_count')
@@ -56,7 +56,7 @@ abstract class $GithubRepoDTOCopyWith<$Res> {
       @HiveField(2)
           String name,
       @HiveField(3)
-      @JsonKey(name: 'description', defaultValue: '')
+      @JsonKey(name: 'description', defaultValue: "")
           String description,
       @HiveField(4)
       @JsonKey(name: 'stargazers_count')
@@ -143,7 +143,7 @@ abstract class _$$_GithubRepoDTOCopyWith<$Res>
       @HiveField(2)
           String name,
       @HiveField(3)
-      @JsonKey(name: 'description', defaultValue: '')
+      @JsonKey(name: 'description', defaultValue: "")
           String description,
       @HiveField(4)
       @JsonKey(name: 'stargazers_count')
@@ -223,7 +223,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
       @HiveField(2)
           required this.name,
       @HiveField(3)
-      @JsonKey(name: 'description', defaultValue: '')
+      @JsonKey(name: 'description', defaultValue: "")
           required this.description,
       @HiveField(4)
       @JsonKey(name: 'stargazers_count')
@@ -248,7 +248,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
   final String name;
   @override
   @HiveField(3)
-  @JsonKey(name: 'description', defaultValue: '')
+  @JsonKey(name: 'description', defaultValue: "")
   final String description;
   @override
   @HiveField(4)
@@ -317,7 +317,7 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
       @HiveField(2)
           required final String name,
       @HiveField(3)
-      @JsonKey(name: 'description', defaultValue: '')
+      @JsonKey(name: 'description', defaultValue: "")
           required final String description,
       @HiveField(4)
       @JsonKey(name: 'stargazers_count')
@@ -342,7 +342,7 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
   String get name;
   @override
   @HiveField(3)
-  @JsonKey(name: 'description', defaultValue: '')
+  @JsonKey(name: 'description', defaultValue: "")
   String get description;
   @override
   @HiveField(4)
